@@ -17,7 +17,8 @@ class ProfileScreen extends Component {
             userinfo:"f",
             postdata:"w",
             postidnum:"",
-            posttextnew:""
+            posttextnew:"",
+            photo:'./assets/defaultprofile.jpg'
         }
     }
     render(){
@@ -295,7 +296,7 @@ class ProfileScreen extends Component {
         }
       };
 
-      get_profile_image = () => {
+      get_profile_image = async () => {
         const value = await AsyncStorage.getItem('@session_token');
         const uid = await AsyncStorage.getItem('@userid');
         fetch("http://localhost:3333/api/1.0.0/user/"+uid+"/photo", {
@@ -323,3 +324,16 @@ class ProfileScreen extends Component {
 export default ProfileScreen;
 
 const styles = StyleSheet.create({});
+//code to create a document picker 
+//const [fileResponse, setFileResponse] = useState([]);
+
+//  const handleDocumentSelection = useCallback(async () => {
+ //   try {
+ //     const response = await DocumentPicker.pick({
+     //   presentationStyle: 'fullScreen',
+     // });
+    //  setFileResponse(response);
+    //} catch (err) {
+     // console.warn(err);
+   // }
+ // }, []);
