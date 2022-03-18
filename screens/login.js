@@ -36,9 +36,6 @@ class LogInScreen extends Component {
         );
     } 
     login = async () => {
-
-        //Validation here...
-    
         return fetch("http://localhost:3333/api/1.0.0/login", {
             method: 'post',
             headers: {
@@ -59,7 +56,7 @@ class LogInScreen extends Component {
                 console.log(responseJson);
                 await AsyncStorage.setItem('@session_token', responseJson.token);
                 await AsyncStorage.setItem('@loggedinemail', this.state.email);
-                await AsyncStorage.setItem('@userid',responseJson.id)
+                await AsyncStorage.setItem('@userid',responseJson.id);
                 this.props.navigation.navigate('DrawerStack');
         })
         .catch((error) => {
